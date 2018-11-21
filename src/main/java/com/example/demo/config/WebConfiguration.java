@@ -15,6 +15,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+@SuppressWarnings({"rawtypes","unchecked"})
 @Configuration
 public class WebConfiguration {
 	@Bean
@@ -22,9 +24,9 @@ public class WebConfiguration {
         return new RemoteIpFilter();
     }
     
-    @Bean
+   
+	@Bean
     public FilterRegistrationBean testFilterRegistration() {
-
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(new MyFilter());
         registration.addUrlPatterns("/*");
@@ -37,6 +39,7 @@ public class WebConfiguration {
     public class MyFilter implements Filter {
 		public void destroy() {
 			// TODO Auto-generated method stub
+			System.out.println("this is MyFilter destroy");
 		}
 
 		public void doFilter(ServletRequest srequest, ServletResponse sresponse, FilterChain filterChain)
@@ -49,6 +52,7 @@ public class WebConfiguration {
 
 		public void init(FilterConfig arg0) throws ServletException {
 			// TODO Auto-generated method stub
+			System.out.println("this is MyFilter init");
 		}
     }
 }

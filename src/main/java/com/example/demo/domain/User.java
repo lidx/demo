@@ -7,6 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+
+/**
+ * 正常情况下我们在实体类上加入注解@Entity，
+ * 就会让实体类和表相关连如果其中某个属性我们不需要和数据库来关联只是在展示的时候做计算，只需要加上@Transient属性既可
+ * @author 86187
+ *
+ */
 @Entity
 public class User implements Serializable {
 

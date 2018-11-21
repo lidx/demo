@@ -1,0 +1,52 @@
+<mapper namespace="com.example.demo.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.example.demo.domain.User" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="passWord" property="passWord" jdbcType="VARCHAR" />
+        <result column="email" property="emial" javaType="VARCHAR"/>
+        <result column="nickName" property="nickName" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <sql id="Base_Column_List" >
+        id, userName, passWord, email, nikeName
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+       SELECT 
+       <include refid="Base_Column_List" />
+	   FROM user
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT 
+       <include refid="Base_Column_List" />
+	   FROM user
+	   WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.neo.entity.UserEntity" >
+       INSERT INTO 
+       		user
+       		(userName,passWord,email) 
+       	VALUES
+       		(#{userName}, #{passWord}, #{email})
+    </insert>
+    
+    <update id="update" parameterType="com.neo.entity.UserEntity" >
+       UPDATE 
+       		user
+       SET 
+       	<if test="userName != null">userName = #{userName},</if>
+       	<if test="passWord != null">passWord = #{passWord},</if>
+       	nickName = #{nickName}
+       WHERE 
+       		id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="java.lang.Long" >
+       DELETE FROM
+       		 user
+       WHERE 
+       		 id =#{id}
+    </delete>
+</mapper>
