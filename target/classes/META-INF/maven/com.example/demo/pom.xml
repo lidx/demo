@@ -93,7 +93,13 @@
 		<dependency> 
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-mail</artifactId>
-		</dependency> 
+		</dependency>
+		<!-- lombok -->
+		<dependency>  
+	      <groupId>org.projectlombok</groupId>  
+	      <artifactId>lombok</artifactId>  
+	      <version>1.18.2</version>  
+		</dependency>  
 	</dependencies>
 
 	<build>
